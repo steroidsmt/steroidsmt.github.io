@@ -16,7 +16,10 @@ var bird = function(game) {
     this.speedY = 0;
     this.acceletation = 0.7;
     var scor = new Audio();
-    scor.src = "/sounds/score.mp3";
+    scor.src = "/flappy-bird-js/sounds/score.mp3";
+
+    var hit = new Audio();
+    hit.src = "/flappy-bird-js/sounds/hit.wav";
 
     this.init = function() {
         this.loadImages()
@@ -41,9 +44,9 @@ var bird = function(game) {
         }
         
         // load all images
-        img1.src = '/images/bird1.png';
-        img2.src = '/images/bird2.png';
-        img3.src = '/images/bird3.png';
+        img1.src = '/flappy-bird-js/images/bird1.png';
+        img2.src = '/flappy-bird-js/images/bird2.png';
+        img3.src = '/flappy-bird-js/images/bird3.png';
     }
 
     this.update = function() {
@@ -86,6 +89,7 @@ var bird = function(game) {
                     this.y + 24 > self.game.pipe.pipes[i].y
                 )
             ) {
+                hit.play()
                 self.game.gameOver = true;
                 self.game.gameOverCheck()
             } 
@@ -102,6 +106,8 @@ var bird = function(game) {
     this.checkHitGround = function() {
         if (this.y >= 400 || this.y <= 0) {
             this.y = 400
+            hit.muted
+            hit.play()
             self.game.gameOver = true;
             self.game.gameOverCheck()
         }       

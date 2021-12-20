@@ -1,5 +1,5 @@
 // var game = null
-var bg = function(game) {
+var base = function(game) {
     this.game = game;
     this.image = null;
     this.loaded = false;
@@ -16,17 +16,17 @@ var bg = function(game) {
             self.loaded = true;
             // console.log('image loaded')
         }
-        this.image.src = '/images/bg.png'
+        this.image.src = '/flappy-bird-js/images/base.png'
     }
 
     this.update = function() {
-        this.x--;
-        if (this.x == -288) this.x = 0
+        this.x -= 2;
+        if (this.x == -336) this.x = 0
     }
 
     this.draw = function() {
         if (this.loaded == false) return;
-        this.game.context.drawImage(this.image, this.x, 0);
-        this.game.context.drawImage(this.image, this.x + 288, 0);
+        this.game.context.drawImage(this.image, this.x, 430);
+        this.game.context.drawImage(this.image, this.x + 336, 430);
     }
 }

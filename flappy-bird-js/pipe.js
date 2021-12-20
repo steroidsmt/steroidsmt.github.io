@@ -25,8 +25,8 @@ var pipe = function(game) {
             self.loaded = true;
             // console.log('image loaded')
         }
-        this.image.src = '/images/pipe.png'
-        this.image2.src = '/images/pipe2.png'
+        this.image.src = '/flappy-bird-js/images/pipe.png'
+        this.image2.src = '/flappy-bird-js/images/pipe2.png'
 
     }
 

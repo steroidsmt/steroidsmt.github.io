@@ -11,14 +11,17 @@ var game = function () {
     this.gameOver = false;
     this.gameOverBannerWidth = 192;
     this.gameOverBannerHeight = 42;
-    this.score = 1;
+    this.score = 0;
     this.test = 1
     var imageGameOver = new Image();
-    imageGameOver.src = '/images/gameover.png'
+    imageGameOver.src = '/flappy-bird-js/images/gameover.png'
 
     // audio files
     var fly = new Audio();
-    fly.src = "/sounds/fly.mp3";
+    fly.src = "/flappy-bird-js/sounds/fly.mp3";
+
+    var die = new Audio();
+    die.src = "/flappy-bird-js/sounds/die.wav";
 
 
     this.init = function () {
@@ -28,7 +31,8 @@ var game = function () {
         this.canvas.width = this.width;
         this.canvas.height = this.height;
         this.context = this.canvas.getContext('2d');
-        document.body.appendChild(this.canvas)
+        var game = document.getElementById('game')
+        game.appendChild(this.canvas)
 
         // create new bird
         this.bird = new bird(this)
@@ -61,9 +65,11 @@ var game = function () {
         this.loop()
     }  
 
-    this.gameOverCheck = function() {
+    this.gameOverCheck = function() {       
         if (self.gameOver == true) {
             console.log('game over')
+            die.muted
+            die.play()
             self.context.drawImage(imageGameOver, self.width/2 - self.gameOverBannerWidth/2 , self.height/2 - self.gameOverBannerHeight/2);
             return true
         }
@@ -88,7 +94,7 @@ var game = function () {
     this.resetGame = function() {
         this.bird.reset();
         this.pipe.reset();
-        this.score = 1
+        this.score = 0
         this.gameOver = false;
         this.loop()
     }
@@ -117,7 +123,6 @@ var game = function () {
         this.pipe.draw();
         this.base.draw();
         this.bird.draw();
-
     }
 
 

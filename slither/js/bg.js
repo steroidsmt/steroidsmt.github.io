@@ -8,8 +8,8 @@ class bg {
   }
 
   drawLine(startPos, endPos) {
-    this.game.ctx.strokeStyle = '#d9d9d9';
-    this.game.ctx.linveWidth = 3;
+    this.game.ctx.strokeStyle = BG_STROKE_LINE;
+    this.game.ctx.linveWidth = BG_STROKE_WIDTH;
     this.game.ctx.beginPath();
     this.game.ctx.moveTo(startPos.x, startPos.y);
     this.game.ctx.lineTo(endPos.x, endPos.y);

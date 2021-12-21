@@ -26,7 +26,7 @@ class snake {
           x: event.clientX - rect.left,
           y: event.clientY - rect.top
         });
-      }, 200);
+      }, 300);
       this.currentAngle = this.processMouseMove({
         x: event.clientX - rect.left,
         y: event.clientY - rect.top
